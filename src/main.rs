@@ -1,3 +1,8 @@
+mod core_concepts;
+
 fn main() {
-    println!("Hello, world!");
+    println!("Rust practice Porject");
+    println!("Running core concept exmaples...");
+
+    core_concepts::ownership::demo_ownership();
 }
