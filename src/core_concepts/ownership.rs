@@ -1,7 +1,6 @@
 pub fn demo_ownership() {
     println!("Ownership in Rust is a set of rules that governs how memory is managed.");
 
-
     let s3 = String::from("Hello");
     let s3_new = transfer_ownership(s3); // Ownership of s3 is moved to transfer_ownership function
     println!("s3_new: {}", s3_new);
