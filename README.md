@@ -33,7 +33,12 @@ Below are the key Rust concepts covered in this repo under src/core_concepts/:
 | ✅ Borrowing & References | Shared access to data via `&T` and exclusive access via `&mut T`.           |
 | ✅ Traits                 | Defining and implementing shared behavior (similar to interfaces).          |
 | ✅ Trait Bounds           | Generics with constraints using `T: Trait`.                                 |
-| ✅ Multiple Trait Bounds  | Using `+` syntax for compound trait requirements.                           |  
+| ✅ Multiple Trait Bounds  | Using `+` syntax for compound trait requirements.                           | 
+| ✅ Vec              | Growable, indexable list of items (`Vec<T>`)                                      |
+| ✅ HashMap          | Unordered key-value store, great for counting, mapping                            |
+| ✅ HashSet          | Unordered set of unique values                                                    |
+| ✅ VecDeque         | Double-ended queue with fast push/pop at both ends                                |
+| ✅ BTreeMap         | Ordered key-value map (sorted by key) | 
 
 📝 All concepts include examples with comments and often test cases
 
