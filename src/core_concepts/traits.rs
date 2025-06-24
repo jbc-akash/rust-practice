@@ -87,7 +87,9 @@ pub fn display_details<T: Summary + Printable>(item: &T) {
 
 pub fn demo_traits() {
     // Objective: Understand traits, trait bounds, and trait implementations to achieve polymorphism in Rust.
-    println!("Traits in Rust are a way to define shared behavior across types, similar to interfaces in other languages.");
+    println!(
+        "Traits in Rust are a way to define shared behavior across types, similar to interfaces in other languages."
+    );
     println!("\n=== Trait Concept Demo ===\n");
 
     // Exercise 1: Define a trait and implement it for a struct
@@ -112,11 +114,10 @@ pub fn demo_traits() {
     print_summary(&article);
     print_summary(&book);
 
-     // Exercise 2: Use multiple traits
+    // Exercise 2: Use multiple traits
     display_details(&tweet);
     display_details(&article);
 
-
-     // Book doesn’t implement Printable, so can't be passed to `display_details`
+    // Book doesn’t implement Printable, so can't be passed to `display_details`
     println!("Book default summary: {}\n", book.default_summary());
 }
