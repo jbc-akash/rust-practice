@@ -1,10 +1,9 @@
 # Rust Practice Project
 
-This project is a collection of Rust exercises and LeetCode problem solutions to build a solid foundation in Rust programming. It covers core Rust concepts (ownership, borrowing, lifetimes, traits, etc.) and organizes LeetCode problems by category.
+This project is a collection of Rust exercises to build a solid foundation in Rust programming. It covers core Rust concepts (ownership, borrowing, lifetimes, traits, etc.).
 
 ## Project Structure
 - `src/core_concepts/`: Exercises for learning Rust fundamentals.
-- `src/leetcode/`: Solutions to LeetCode problems, organized by problem type or number.
 - `src/tests/`: Unit and integration tests for all exercises and solutions.
 
 ## Getting Started
@@ -24,6 +23,19 @@ This project is a collection of Rust exercises and LeetCode problem solutions to
 cargo run
 # Output: Running core concept examples and LeetCode solutions...
 ```
+
+## 📘 Core Rust Concepts Included
+Below are the key Rust concepts covered in this repo under src/core_concepts/:
+
+| Concept                  | Description                                                                 |
+|--------------------------|-----------------------------------------------------------------------------|
+| ✅ Ownership              | How Rust manages memory through ownership rules.                           |
+| ✅ Borrowing & References | Shared access to data via `&T` and exclusive access via `&mut T`.           |
+| ✅ Traits                 | Defining and implementing shared behavior (similar to interfaces).          |
+| ✅ Trait Bounds           | Generics with constraints using `T: Trait`.                                 |
+| ✅ Multiple Trait Bounds  | Using `+` syntax for compound trait requirements.                           |  
+
+📝 All concepts include examples with comments and often test cases
 
 ## Contributing
 Feel free to add new problems or improve existing solutions. Ensure all code is tested and follows Rust best practices.
