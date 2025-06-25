@@ -107,9 +107,45 @@ impl<'a> TextSlice<'a> {
     }
 }
 
+/// A recursive enum reperesenting arithmetic expressions.
+#[derive(Debug)]
+pub enum Expression {
+    Number(f64),
+    Add(Box<Expression>, Box<Expression>),
+    Multiply(Box<Expression>, Box<Expression>),
+}
+
+/// Evaluate an arithmetic expression to a number
+pub fn evaluate(expr: &Expression) -> f64 {
+    match expr {
+        Expression::Number(value) => *value,
+        Expression::Add(left, right) => {
+            let left_value = evaluate(left);
+            let right_value = evaluate(right);
+
+            if (left_value.abs() > 1e10 || right_value.abs() > 1e10) {
+                panic!("Addition result too large | Overflow detected in addition: {} + {}", left_value, right_value);
+            }
+
+            left_value + right_value
+        }
+        Expression::Multiply(left, right) => {
+            let left_value = evaluate(left);
+            let right_value = evaluate(right);
+
+            if (left_value.abs() > 1e10 || right_value.abs() > 1e10) {
+                panic!("Multiplication result too large | Overflow detected in multiplication: {} * {}", left_value, right_value);
+            }
+
+            left_value * right_value
+        }
+    }
+}
+
 
 pub fn demo_structs_enums() {
     println!("Structs and enums in Rust allow you to create custom data types that can encapsulate related data and behavior.");
+    println!("\n=== Structs and Enums Concept Demo ===\n");
 
     // Exercise 1: Reactangle struct
     let rect = Rectangle {
@@ -145,4 +181,17 @@ pub fn demo_structs_enums() {
     println!("TextSlice: {} (length: {})", text_slice.slice, text_slice.length);
     let truncated = text_slice.truncate(5);
     println!("Truncated TextSlice: {} (length: {})", truncated.slice, truncated.length);
+
+    // Exercise 6: Expression enum
+    let expr = Expression::Add(
+        Box::new(Expression::Number(3.0)),
+        Box::new(Expression::Multiply(
+            Box::new(Expression::Number(2.0)),
+            Box::new(Expression::Number(4.0)),
+        )),
+    );
+
+    println!("Expression: {:?}", expr);
+    let result = evaluate(&expr);
+    println!("Evaluated result: {}", result);
 }
