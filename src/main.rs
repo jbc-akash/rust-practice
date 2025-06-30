@@ -11,4 +11,5 @@ fn main() {
     // core_concepts::traits::demo_traits();
     // core_concepts::collections::demo_collections();
     core_concepts::structs_enums::demo_structs_enums();
+    core_concepts::generics::demo_generics();
 }

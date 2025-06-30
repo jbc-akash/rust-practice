@@ -1,9 +1,9 @@
 pub mod borrowing;
 pub mod collections;
+pub mod generics;
 pub mod ownership;
-pub mod traits;
 pub mod structs_enums;
-// Generic
+pub mod traits;
 // Error Handling
 // Concurrency
 // Closure/Iterators

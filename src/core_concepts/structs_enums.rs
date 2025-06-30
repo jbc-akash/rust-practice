@@ -23,24 +23,32 @@ impl Rectangle {
 /// An enum representing various geometric shapes.
 #[derive(Debug)]
 pub enum Shape {
-    Circle(f64), // radius
+    Circle(f64),         // radius
     Rectangle(f64, f64), // width, height
-    Triangle(f64, f64), // base, height
+    Triangle(f64, f64),  // base, height
 }
 
 /// Describe the shape and calculate its area using pattern matching.
 pub fn describe_shape(shape: &Shape) -> String {
     match shape {
         Shape::Circle(radius) => {
-            let area = std::f64::consts::PI * radius * radius;
+            let area = PI * radius * radius;
             format!("Circle with radius: {}, area: {:.2}", radius, area)
         }
         Shape::Rectangle(width, height) => {
-            format!("Rectangle with width: {} and height: {}, area: {:.2}", width, height, width * height)
+            format!(
+                "Rectangle with width: {} and height: {}, area: {:.2}",
+                width,
+                height,
+                width * height
+            )
         }
         Shape::Triangle(base, height) => {
             let area = 0.5 * base * height;
-            format!("Triangle with base {}, height {}, area: {:.2}", base, height, area)
+            format!(
+                "Triangle with base {}, height {}, area: {:.2}",
+                base, height, area
+            )
         }
     }
 }
@@ -124,7 +132,10 @@ pub fn evaluate(expr: &Expression) -> f64 {
             let right_value = evaluate(right);
 
             if (left_value.abs() > 1e10 || right_value.abs() > 1e10) {
-                panic!("Addition result too large | Overflow detected in addition: {} + {}", left_value, right_value);
+                panic!(
+                    "Addition result too large | Overflow detected in addition: {} + {}",
+                    left_value, right_value
+                );
             }
 
             left_value + right_value
@@ -134,7 +145,10 @@ pub fn evaluate(expr: &Expression) -> f64 {
             let right_value = evaluate(right);
 
             if (left_value.abs() > 1e10 || right_value.abs() > 1e10) {
-                panic!("Multiplication result too large | Overflow detected in multiplication: {} * {}", left_value, right_value);
+                panic!(
+                    "Multiplication result too large | Overflow detected in multiplication: {} * {}",
+                    left_value, right_value
+                );
             }
 
             left_value * right_value
@@ -142,9 +156,10 @@ pub fn evaluate(expr: &Expression) -> f64 {
     }
 }
 
-
 pub fn demo_structs_enums() {
-    println!("Structs and enums in Rust allow you to create custom data types that can encapsulate related data and behavior.");
+    println!(
+        "Structs and enums in Rust allow you to create custom data types that can encapsulate related data and behavior."
+    );
     println!("\n=== Structs and Enums Concept Demo ===\n");
 
     // Exercise 1: Reactangle struct
@@ -167,20 +182,37 @@ pub fn demo_structs_enums() {
     // Excercise 3: Point and Origin
     let point = Point(3.0, 4.0);
     let origin = Origin;
-    println!("Distance from point {:?} to origin {:?} is {}", point, origin, distance_to_origin(&point, &origin));
+    println!(
+        "Distance from point {:?} to origin {:?} is {}",
+        point,
+        origin,
+        distance_to_origin(&point, &origin)
+    );
 
     // Exercise 4: Shape with Color
     let colored_circle = (Shape::Circle(1.5), Color::Red);
     let colored_triangle = (Shape::Triangle(3.0, 4.0), Color::Blue);
-    println!("Colored circle: {}", describe_shape_with_color(&colored_circle));
-    println!("Colored triangle: {}", describe_shape_with_color(&colored_triangle));
+    println!(
+        "Colored circle: {}",
+        describe_shape_with_color(&colored_circle)
+    );
+    println!(
+        "Colored triangle: {}",
+        describe_shape_with_color(&colored_triangle)
+    );
 
     // Excercise 5: TextSlice
     let text = String::from("Hello, Rust!");
     let text_slice = TextSlice::new(&text);
-    println!("TextSlice: {} (length: {})", text_slice.slice, text_slice.length);
+    println!(
+        "TextSlice: {} (length: {})",
+        text_slice.slice, text_slice.length
+    );
     let truncated = text_slice.truncate(5);
-    println!("Truncated TextSlice: {} (length: {})", truncated.slice, truncated.length);
+    println!(
+        "Truncated TextSlice: {} (length: {})",
+        truncated.slice, truncated.length
+    );
 
     // Exercise 6: Expression enum
     let expr = Expression::Add(
