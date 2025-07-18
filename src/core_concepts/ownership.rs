@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub fn demo_ownership() {
     println!("Ownership in Rust is a set of rules that governs how memory is managed.");
 
@@ -12,10 +13,12 @@ pub fn demo_ownership() {
     println!("original: {}, copied: {}", original, copied);
 }
 
+#[allow(dead_code)]
 pub fn transfer_ownership(s: String) -> String {
     s // Ownership is returned to the caller
 }
 
+#[allow(dead_code)]
 pub fn copy_value(x: i32) -> (i32, i32) {
     let y = x; // x is copied to y
     (x, y) // Both x and y can be used after this

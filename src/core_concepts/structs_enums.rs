@@ -2,11 +2,13 @@ use std::f64::consts::PI;
 
 /// A regular struct representing a rectangle.
 #[derive(Debug)]
+#[allow(dead_code)]
 pub struct Rectangle {
     pub width: f64,
     pub height: f64,
 }
 
+#[allow(dead_code)]
 impl Rectangle {
     pub fn area(&self) -> f64 {
         self.width * self.height
@@ -21,6 +23,7 @@ impl Rectangle {
 }
 
 /// An enum representing various geometric shapes.
+#[allow(dead_code)]
 #[derive(Debug)]
 pub enum Shape {
     Circle(f64),         // radius
@@ -29,6 +32,7 @@ pub enum Shape {
 }
 
 /// Describe the shape and calculate its area using pattern matching.
+#[allow(dead_code)]
 pub fn describe_shape(shape: &Shape) -> String {
     match shape {
         Shape::Circle(radius) => {
@@ -61,6 +65,7 @@ pub struct Point(pub f64, pub f64);
 #[derive(Debug)]
 pub struct Origin;
 
+#[allow(unused_variables, dead_code)]
 pub fn distance_to_origin(point: &Point, origin: &Origin) -> f64 {
     let dx = point.0 - 0.0; // x-coordinate of origin is 0
     let dy = point.1 - 0.0; // y-coordinate of origin is 0
@@ -69,12 +74,15 @@ pub fn distance_to_origin(point: &Point, origin: &Origin) -> f64 {
 
 /// An enum representing RGB colors.
 #[derive(Debug)]
+#[allow(dead_code)]
 pub enum Color {
     Red,
     Green,
     Blue,
 }
 
+
+#[allow(dead_code)]
 pub fn describe_shape_with_color(shape_color: &(Shape, Color)) -> String {
     let (shape, color) = shape_color;
     let color_str = match color {
@@ -88,11 +96,13 @@ pub fn describe_shape_with_color(shape_color: &(Shape, Color)) -> String {
 
 /// A struct holding a string slice with its length using a lifetime.
 #[derive(Debug)]
+#[allow(dead_code)]
 pub struct TextSlice<'a> {
     pub slice: &'a str,
     pub length: usize,
 }
 
+#[allow(dead_code)]
 impl<'a> TextSlice<'a> {
     /// Create a new TextSlice from a string slice.
     pub fn new(slice: &'a str) -> Self {
@@ -117,6 +127,7 @@ impl<'a> TextSlice<'a> {
 
 /// A recursive enum reperesenting arithmetic expressions.
 #[derive(Debug)]
+#[allow(dead_code)]
 pub enum Expression {
     Number(f64),
     Add(Box<Expression>, Box<Expression>),
@@ -124,6 +135,7 @@ pub enum Expression {
 }
 
 /// Evaluate an arithmetic expression to a number
+#[allow(dead_code)]
 pub fn evaluate(expr: &Expression) -> f64 {
     match expr {
         Expression::Number(value) => *value,
@@ -131,7 +143,7 @@ pub fn evaluate(expr: &Expression) -> f64 {
             let left_value = evaluate(left);
             let right_value = evaluate(right);
 
-            if (left_value.abs() > 1e10 || right_value.abs() > 1e10) {
+            if left_value.abs() > 1e10 || right_value.abs() > 1e10 {
                 panic!(
                     "Addition result too large | Overflow detected in addition: {} + {}",
                     left_value, right_value
@@ -144,7 +156,7 @@ pub fn evaluate(expr: &Expression) -> f64 {
             let left_value = evaluate(left);
             let right_value = evaluate(right);
 
-            if (left_value.abs() > 1e10 || right_value.abs() > 1e10) {
+            if left_value.abs() > 1e10 || right_value.abs() > 1e10 {
                 panic!(
                     "Multiplication result too large | Overflow detected in multiplication: {} * {}",
                     left_value, right_value
@@ -156,6 +168,7 @@ pub fn evaluate(expr: &Expression) -> f64 {
     }
 }
 
+#[allow(dead_code)]
 pub fn demo_structs_enums() {
     println!(
         "Structs and enums in Rust allow you to create custom data types that can encapsulate related data and behavior."

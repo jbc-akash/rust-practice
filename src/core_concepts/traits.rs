@@ -52,6 +52,7 @@ impl Summary for Book {
 }
 
 // Trait: Printable - extra trait for multiple bounds demo
+#[allow(dead_code)]
 pub trait Printable {
     fn print(&self);
 }
@@ -72,11 +73,13 @@ impl Printable for Article {
 }
 
 // Generic function with single trait bound
+#[allow(dead_code)]
 pub fn print_summary<T: Summary>(item: &T) {
     println!("Summary: {}", item.summarize());
 }
 
 // Generic function with multiple trait bounds
+#[allow(dead_code)]
 pub fn display_details<T: Summary + Printable>(item: &T) {
     println!("\n-- Displaying Details --");
     item.print();
@@ -85,6 +88,7 @@ pub fn display_details<T: Summary + Printable>(item: &T) {
     println!("-------------------------\n");
 }
 
+#[allow(dead_code)]
 pub fn demo_traits() {
     // Objective: Understand traits, trait bounds, and trait implementations to achieve polymorphism in Rust.
     println!(

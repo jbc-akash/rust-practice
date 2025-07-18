@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub fn demo_borrowing() {
     println!(
         "Borrowing in Rust allows you to use a value without taking ownership of it, enabling multiple references to the same data."
@@ -14,10 +15,12 @@ pub fn demo_borrowing() {
     println!("After appending, s2 is '{}'.", s2);
 }
 
+#[allow(dead_code)]
 pub fn calculate_length(s: &String) -> usize {
     s.len() // Using the borrowed reference to calculate length
 }
 
+#[allow(dead_code)]
 pub fn append_word(s: &mut String, suffix: &str) {
     s.push_str(suffix);
 }

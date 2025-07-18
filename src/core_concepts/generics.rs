@@ -19,6 +19,7 @@ impl<T> Point<T> {
 
 // Struct with two different generic types
 #[derive(Debug)]
+#[allow(dead_code)]
 pub struct Pair<T, U> {
     pub left: T,
     pub right: U,
@@ -39,7 +40,8 @@ where
         println!("Max value: {}", max_value);
         max_value
     }
-
+    
+#[allow(dead_code)]
 pub fn demo_generics() {
     println!(
         "Generics in Rust allow you to write flexible and reusable code by defining functions, structs, enums, and traits that can operate on different types without sacrificing type safety."

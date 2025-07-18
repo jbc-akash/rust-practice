@@ -14,6 +14,7 @@ pub fn count_word_frequencies(words: Vec<String>) -> HashMap<String, usize> {
 
 /// Collect unique words using a HashSet.
 /// Duplicates are automatically discarded.
+#[allow(dead_code)]
 pub fn get_unique_words(words: Vec<String>) -> HashSet<String> {
     let mut unique_words = HashSet::new();
 
@@ -24,6 +25,7 @@ pub fn get_unique_words(words: Vec<String>) -> HashSet<String> {
     unique_words
 }
 
+#[allow(dead_code)]
 pub fn demo_collections() {
     println!("\nCollections in Rust are used to store multiple values in a single data structure.");
     println!("=== Rust Collections Demo ===\n");
