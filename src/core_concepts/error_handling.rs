@@ -1,3 +1,5 @@
+use std::fs::File;
+
 /// Demonstrates the `panic!` macro in Rust.
 #[allow(dead_code)]
 pub fn demo_panic_macro() {
@@ -33,8 +35,11 @@ pub fn demo_error_handling() {
     
     // Uncomment the line below to see a simple panic example
     // demo_panic_macro();
+    // Uncomment the line below to see a backtrace example
+    // demo_backtrace();
 
-    demo_backtrace();
+    demo_recoverable_error_handling();
+
 }
 
 
@@ -68,4 +73,20 @@ pub fn c(num: i32) {
     } else {
         println!("Number is not 22, execution continues.");
     }
+}
+
+/// Demo recoverable error handling using `Result`.
+#[allow(dead_code)]
+pub fn demo_recoverable_error_handling() {
+    println!("=== Recoverable Error Handling Demo ===\n");
+
+    let file_result = File::open("hello.txt");
+
+    let file = match file_result {
+        Ok(file) => file,
+        Err(e) => {
+            panic!("Failed to open file: {}. Error: {:?}", "hello.txt", e);
+        },
+    };
+    
 }
