@@ -1,55 +1,71 @@
+/// Demonstrates the `panic!` macro in Rust.
 #[allow(dead_code)]
 pub fn demo_panic_macro() {
-    // The panic! macro is used to stop execution and indicate an unrecoverable error.
-    println!(
-        "The panic! macro in Rust is used to stop execution and indicate an unrecoverable error. 
-        It can be used with a message to provide context."
-    );
-    println!("\n======== Panic Macro Demo =============\n");
+    println!("=== Panic Macro Demo ===\n");
 
-    // Example of using panic! macro
+    println!(
+        "In Rust, the `panic!` macro is used to immediately stop program execution \
+        when an unrecoverable error occurs. It prints an error message and unwinds \
+        the stack (or aborts, depending on settings)."
+    );
+
     let condition = false;
+
+    // If the condition is false, trigger a panic with a custom message.
     if !condition {
-        panic!("This is a panic message: Condition was false!");
+        panic!("Panic occurred because `condition` was false.");
     }
+
+    println!("This line will never be reached if panic occurs.");
 }
 
+/// Demonstrates error handling and panic tracing in Rust.
 #[allow(dead_code)]
 pub fn demo_error_handling() {
-    // Objective: Understand error handling in Rust using Result and Option types.
-    println!(
-        "Error handling in Rust is done using the Result and Option types, which provide a way to handle errors without exceptions."
-    );
-    println!("\n======== Error Handling Demo =============\n");
+    println!("=== Error Handling Demo ===\n");
 
+    println!(
+        "Rust handles errors through `Result` and `Option` types instead of exceptions. \
+        For unrecoverable errors, `panic!` is used.\n"
+    );
+
+    println!("Now demonstrating a panic with backtrace:\n");
+    
+    // Uncomment the line below to see a simple panic example
     // demo_panic_macro();
+
     demo_backtrace();
 }
 
+
+/// Demonstrates panic backtrace using nested function calls.
 #[allow(dead_code)]
 pub fn demo_backtrace() {
-    // The backtrace feature provides a way to see the call stack when a panic occurs.
-    println!(
-        "The backtrace feature in Rust provides a way to see the call stack when a panic occurs. 
-        It can be enabled with the RUST_BACKTRACE environment variable."
-    );
-    println!("\n======== Backtrace Demo =============\n");
+    println!("=== Backtrace Demo ===\n");
 
-    a();
+    println!(
+        "When a panic occurs, Rust can print a backtrace showing the call stack. \
+        Set the environment variable `RUST_BACKTRACE=1` to see the backtrace."
+    );
+
+    a(); // Start the chain of calls leading to panic.
 }
 
+/// First function in the call chain.
 pub fn a() {
     b();
 }
 
+/// Second function in the call chain.
 pub fn b() {
-    c(22);
+    c(22); // Will panic here if number is 22
 }
 
+/// Third function in the call chain that triggers panic.
 pub fn c(num: i32) {
     if num == 22 {
-        panic!("This is a panic in function c with number: {}", num);
+        panic!("Panic in function `c`: received number {}", num);
     } else {
-        println!("Number is not 22, continuing execution.");
+        println!("Number is not 22, execution continues.");
     }
 }
