@@ -12,7 +12,7 @@ fn main() {
     // core_concepts::collections::demo_collections();
     // core_concepts::structs_enums::demo_structs_enums();
     // core_concepts::generics::demo_generics();
-    core_concepts::error_handling::demo_panic_macro();
+    core_concepts::error_handling::demo_error_handling();
 }
 
 
