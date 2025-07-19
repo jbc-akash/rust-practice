@@ -32,15 +32,15 @@ pub enum ResultLike<T, E> {
     Err(E),
 }
 
-pub fn print_and_return_max<T>(a: T, b: T) -> T 
+pub fn print_and_return_max<T>(a: T, b: T) -> T
 where
     T: PartialOrd + Display,
-    {
-        let max_value = if a > b { a } else { b };
-        println!("Max value: {}", max_value);
-        max_value
-    }
-    
+{
+    let max_value = if a > b { a } else { b };
+    println!("Max value: {}", max_value);
+    max_value
+}
+
 #[allow(dead_code)]
 pub fn demo_generics() {
     println!(
@@ -60,18 +60,20 @@ pub fn demo_generics() {
     println!("Int point coordinates: {:?}", int_point.coordinates());
     println!("Float point coordinates: {:?}", float_point.coordinates());
 
-
     // Excercise 3: Pair struct with two types
-     let pair = Pair { left: "left", right: 100 };
-     println!("Pair: {:?}", pair);
+    let pair = Pair {
+        left: "left",
+        right: 100,
+    };
+    println!("Pair: {:?}", pair);
 
-     // Excercise 4: Generic Enum
-     let ok: ResultLike<i32, &str> = ResultLike::Ok(10);
-     let err: ResultLike<i32, &str> = ResultLike::Err("Error occurred");
-     println!("ResultLike Ok: {:?}", ok);   
-     println!("ResultLike Err: {:?}", err);
+    // Excercise 4: Generic Enum
+    let ok: ResultLike<i32, &str> = ResultLike::Ok(10);
+    let err: ResultLike<i32, &str> = ResultLike::Err("Error occurred");
+    println!("ResultLike Ok: {:?}", ok);
+    println!("ResultLike Err: {:?}", err);
 
-     // Excercie 5: Generic function with multiple trait bounds
-     print_and_return_max("hellosadfa", "worlds");
-     print_and_return_max(10, 20);
+    // Excercie 5: Generic function with multiple trait bounds
+    print_and_return_max("hellosadfa", "worlds");
+    print_and_return_max(10, 20);
 }

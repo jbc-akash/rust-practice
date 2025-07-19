@@ -15,7 +15,6 @@ fn main() {
     core_concepts::error_handling::demo_error_handling();
 }
 
-
 // // ----------------------------------------------------------------------------
 // // Associated Functions and Methods
 // // Convert Data Type into the struct point
@@ -35,8 +34,6 @@ fn main() {
 //     }
 // }
 // // ---------------------------------------------------------------------------
-
-
 
 // /// Associated Type
 // //  This is a placeholder for a trait that defines an associated type.

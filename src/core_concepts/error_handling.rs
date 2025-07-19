@@ -32,17 +32,13 @@ pub fn demo_error_handling() {
         For unrecoverable errors, `panic!` is used.\n"
     );
 
-    println!("Now demonstrating a panic with backtrace:\n");
-    
     // Uncomment the line below to see a simple panic example
     // demo_panic_macro();
     // Uncomment the line below to see a backtrace example
     // demo_backtrace();
 
     demo_recoverable_error_handling();
-
 }
-
 
 /// Demonstrates panic backtrace using nested function calls.
 #[allow(dead_code)]
@@ -93,20 +89,17 @@ pub fn demo_recoverable_error_handling() {
     #[allow(dead_code, unused_variables)]
     let file = match file_result {
         Ok(file) => file,
-        Err(error) => {
-            match error.kind() {
-                ErrorKind::NotFound => {
-                    println!("File not found: hello.txt. Creating a new file.");
-                    match File::create("hello.txt") {
-                        Ok(new_file) => new_file,
-                        Err(e) => panic!("Failed to create file: {}. Error: {:?}", "hello.txt", e),
-                    }
-                }
-                _ => {
-                    panic!("Failed to open file: {}. Error: {:?}", "hello.txt", error);
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => {
+                println!("File not found: hello.txt. Creating a new file.");
+                match File::create("hello.txt") {
+                    Ok(new_file) => new_file,
+                    Err(e) => panic!("Failed to create file: {}. Error: {:?}", "hello.txt", e),
                 }
             }
-        }
+            other_error => {
+                panic!("Failed to open file: {}. Error: {:?}", "hello.txt", error);
+            }
+        },
     };
-    
 }

@@ -81,7 +81,6 @@ pub enum Color {
     Blue,
 }
 
-
 #[allow(dead_code)]
 pub fn describe_shape_with_color(shape_color: &(Shape, Color)) -> String {
     let (shape, color) = shape_color;
