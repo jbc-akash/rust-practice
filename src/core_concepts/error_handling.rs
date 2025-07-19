@@ -1,4 +1,5 @@
 use std::fs::File;
+use std::io::ErrorKind;
 
 /// Demonstrates the `panic!` macro in Rust.
 #[allow(dead_code)]
@@ -82,11 +83,30 @@ pub fn demo_recoverable_error_handling() {
 
     let file_result = File::open("hello.txt");
 
+    // let file = match file_result {
+    //     Ok(file) => file,
+    //     Err(e) => {
+    //         panic!("Failed to open file: {}. Error: {:?}", "hello.txt", e);
+    //     },
+    // };
+
+    #[allow(dead_code, unused_variables)]
     let file = match file_result {
         Ok(file) => file,
-        Err(e) => {
-            panic!("Failed to open file: {}. Error: {:?}", "hello.txt", e);
-        },
+        Err(error) => {
+            match error.kind() {
+                ErrorKind::NotFound => {
+                    println!("File not found: hello.txt. Creating a new file.");
+                    match File::create("hello.txt") {
+                        Ok(new_file) => new_file,
+                        Err(e) => panic!("Failed to create file: {}. Error: {:?}", "hello.txt", e),
+                    }
+                }
+                _ => {
+                    panic!("Failed to open file: {}. Error: {:?}", "hello.txt", error);
+                }
+            }
+        }
     };
     
 }
